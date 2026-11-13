@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#EAF2FF"/>
+      <stop offset="100%" stop-color="#D0E3FF"/>
+    </linearGradient>
+    <linearGradient id="bldgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0B3D91"/>
+      <stop offset="100%" stop-color="#072A66"/>
+    </linearGradient>
+    <linearGradient id="pillGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1E6FEB"/>
+      <stop offset="100%" stop-color="#0B3D91"/>
+    </linearGradient>
+  </defs>
+  <!-- Background Sky -->
+  <rect width="800" height="450" fill="url(#skyGrad)"/>
+  
+  <!-- Campus Lawn -->
+  <path d="M0,380 Q400,340 800,380 L800,450 L0,450 Z" fill="#16A34A" opacity="0.9"/>
+  <path d="M0,410 Q400,390 800,410 L800,450 L0,450 Z" fill="#15803D"/>
+
+  <!-- Main Building Structure -->
+  <rect x="220" y="160" width="360" height="230" rx="8" fill="url(#bldgGrad)"/>
+  
+  <!-- Building Pediment / Roof Header -->
+  <polygon points="200,160 400,80 600,160" fill="#0B3D91"/>
+  <polygon points="215,160 400,95 585,160" fill="#1E6FEB"/>
+
+  <!-- University Emblem Circle -->
+  <circle cx="400" cy="130" r="22" fill="#FFFFFF"/>
+  <circle cx="400" cy="130" r="18" fill="#F59E0B"/>
+
+  <!-- Pillars / Columns -->
+  <rect x="250" y="180" width="24" height="210" rx="4" fill="#FFFFFF" opacity="0.95"/>
+  <rect x="310" y="180" width="24" height="210" rx="4" fill="#FFFFFF" opacity="0.95"/>
+  <rect x="370" y="180" width="24" height="210" rx="4" fill="#FFFFFF" opacity="0.95"/>
+  <rect x="406" y="180" width="24" height="210" rx="4" fill="#FFFFFF" opacity="0.95"/>
+  <rect x="466" y="180" width="24" height="210" rx="4" fill="#FFFFFF" opacity="0.95"/>
+  <rect x="526" y="180" width="24" height="210" rx="4" fill="#FFFFFF" opacity="0.95"/>
+
+  <!-- Main Grand Entrance -->
+  <path d="M360,390 L360,290 A40,40 0 0,1 440,290 L440,390 Z" fill="#072A66"/>
+
+  <!-- Windows Rows -->
+  <g fill="#93C5FD" opacity="0.85">
+    <rect x="282" y="195" width="20" height="30" rx="2"/>
+    <rect x="282" y="240" width="20" height="30" rx="2"/>
+    <rect x="342" y="195" width="20" height="30" rx="2"/>
+    <rect x="342" y="240" width="20" height="30" rx="2"/>
+    <rect x="438" y="195" width="20" height="30" rx="2"/>
+    <rect x="438" y="240" width="20" height="30" rx="2"/>
+    <rect x="498" y="195" width="20" height="30" rx="2"/>
+    <rect x="498" y="240" width="20" height="30" rx="2"/>
+  </g>
+
+  <!-- Trees on side -->
+  <circle cx="120" cy="340" r="55" fill="#15803D"/>
+  <circle cx="150" cy="320" r="45" fill="#16A34A"/>
+  <rect x="130" y="360" width="16" height="50" rx="4" fill="#854D0E"/>
+
+  <circle cx="680" cy="340" r="55" fill="#15803D"/>
+  <circle cx="650" cy="320" r="45" fill="#16A34A"/>
+  <rect x="655" y="360" width="16" height="50" rx="4" fill="#854D0E"/>
+
+  <!-- Badge Text Overlay -->
+  <rect x="260" y="395" width="280" height="36" rx="18" fill="url(#pillGrad)"/>
+  <text x="400" y="419" fill="#FFFFFF" font-family="'Hind Siliguri', 'Inter', sans-serif" font-size="15" font-weight="bold" text-anchor="middle">
+    কুমিল্লা বিশ্ববিদ্যালয় ভর্তি পরীক্ষা কেন্দ্র
+  </text>
+</svg>
+

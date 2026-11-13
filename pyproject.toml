@@ -1,0 +1,12 @@
+[tool.pyright]
+extraPaths = [
+    "backend",
+    "C:/Users/C-LAB/anaconda3/Lib/site-packages"
+]
+
+[tool.pyrefly]
+search-paths = [
+    "backend",
+    "C:/Users/C-LAB/anaconda3/Lib/site-packages"
+]
+
