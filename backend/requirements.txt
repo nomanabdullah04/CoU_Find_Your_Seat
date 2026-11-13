@@ -1,0 +1,28 @@
+# Core Django & REST Framework
+Django==5.1.15
+djangorestframework==3.17.2
+django-cors-headers==4.9.0
+djangorestframework-simplejwt==5.5.1
+django-ratelimit==4.1.0
+
+# Database & Environment
+psycopg2-binary==2.9.13
+python-dotenv==1.2.4
+
+# Excel Processing & Images
+pandas==3.1.1
+openpyxl==3.1.5
+pillow==13.0.0
+numpy==2.5.4
+et_xmlfile==2.0.0
+
+# Utilities & Dependencies
+asgiref==3.13.0
+sqlparse==0.6.1
+tzdata==2026.6
+PyJWT==2.15.1
+python-dateutil==4.0.0
+
+# Testing & Benchmarking
+coverage>=7.0.0
+locust>=2.30.0
