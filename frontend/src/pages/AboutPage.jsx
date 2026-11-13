@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { Github, MapPin, Clock } from 'lucide-react';
+import { Github, Globe, MapPin, Clock } from 'lucide-react';
 import developerPhoto from '../assets/developer.png';
 
 const AboutPage = () => {
@@ -90,16 +90,27 @@ const AboutPage = () => {
             {t('about.developer_uni')}
           </p>
 
-          <div className="pt-2">
+          <div className="pt-2.5 flex flex-wrap items-center justify-center gap-2.5">
+            <a
+              href="https://nabdullah.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Portfolio - Abdullah Al Noman"
+              className="min-h-[44px] px-5 py-2.5 inline-flex items-center justify-center gap-2 rounded-full bg-white text-primary hover:bg-white/90 active:scale-95 border border-white font-bold text-xs sm:text-sm shadow-md transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#071F52]"
+            >
+              <Globe className="w-4 h-4 shrink-0 text-primary" />
+              <span>Let's Connect</span>
+            </a>
+
             <a
               href="https://github.com/nomanabdullah04"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub Profile - Abdullah Al Noman"
-              className="min-h-[44px] px-6 py-2.5 inline-flex items-center justify-center gap-2 rounded-full bg-white/20 hover:bg-white/30 active:scale-95 text-white border border-white/35 font-bold text-xs sm:text-sm shadow-md transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#071F52]"
+              className="min-h-[44px] px-5 py-2.5 inline-flex items-center justify-center gap-2 rounded-full bg-white/20 hover:bg-white/30 active:scale-95 text-white border border-white/35 font-bold text-xs sm:text-sm shadow-md transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#071F52]"
             >
               <Github className="w-4 h-4 shrink-0" />
-              <span>{t('about.github_btn')}</span>
+              <span>GitHub</span>
             </a>
           </div>
         </div>
