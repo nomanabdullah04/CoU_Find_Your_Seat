@@ -4,7 +4,7 @@ import { AlertTriangle, RefreshCw, Home } from 'lucide-react';
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { hasError: false, error: null };
+    this.state = { hasError: false, error: null, errorInfo: null };
   }
 
   static getDerivedStateFromError(error) {
@@ -13,6 +13,7 @@ class ErrorBoundary extends React.Component {
 
   componentDidCatch(error, errorInfo) {
     console.error('ErrorBoundary caught an error:', error, errorInfo);
+    this.setState({ errorInfo });
   }
 
   handleReload = () => {
@@ -20,6 +21,9 @@ class ErrorBoundary extends React.Component {
   };
 
   handleGoHome = () => {
+    try {
+      localStorage.removeItem('cou_last_searched_result');
+    } catch {}
     window.location.href = '/home';
   };
 
@@ -58,6 +62,17 @@ class ErrorBoundary extends React.Component {
                 <span>হোম পেজ</span>
               </button>
             </div>
+
+            {this.state.error && (
+              <details className="text-left bg-slate-50 p-3 rounded-xl border border-slate-200">
+                <summary className="text-[11px] font-mono text-slate-500 cursor-pointer">
+                  ত্রুটির বিস্তারিত (Error Details)
+                </summary>
+                <pre className="text-[10px] text-rose-600 font-mono mt-2 whitespace-pre-wrap break-all max-h-32 overflow-y-auto">
+                  {this.state.error.toString()}
+                </pre>
+              </details>
+            )}
           </div>
         </div>
       );
@@ -68,4 +83,5 @@ class ErrorBoundary extends React.Component {
 }
 
 export default ErrorBoundary;
+
 

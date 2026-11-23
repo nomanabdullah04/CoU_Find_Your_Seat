@@ -23,8 +23,7 @@ import {
 import { searchSeat, getSiteSettings } from '../api';
 import logoImg from '../assets/logo.png';
 import centerFallbackImg from '../assets/center_placeholder.svg';
-
-const MapView = React.lazy(() => import('../components/MapView'));
+import MapView from '../components/MapView';
 
 function getHaversineDistanceKm(lat1, lon1, lat2, lon2) {
   const R = 6371;
@@ -340,10 +339,10 @@ const ResultPage = () => {
   };
 
   const handleShare = () => {
-    if (!resultData) return;
+    if (!resultData?.candidate || !resultData?.seat || !resultData?.center) return;
     const { candidate, seat, center } = resultData;
-    const shareUrl = `${window.location.origin}/result?roll=${candidate.roll}`;
-    const shareText = `কুমিল্লা বিশ্ববিদ্যালয় ভর্তি পরীক্ষা সিট প্ল্যান:\nরোল: ${candidate.roll}\nইউনিট: ${candidate.unit}\nকেন্দ্র: ${isBn ? center.name_bn : center.name_en}\nভবন: ${seat.building}, কক্ষ: ${seat.room}\nআসন নম্বর: ${seat.seat_no}\nরিপোর্টিং সময়: ${seat.reporting_time}\nডিরেকশন লিংক:`;
+    const shareUrl = `${window.location.origin}/result?roll=${candidate.roll || ''}`;
+    const shareText = `কুমিল্লা বিশ্ববিদ্যালয় ভর্তি পরীক্ষা সিট প্ল্যান:\nরোল: ${candidate.roll || ''}\nইউনিট: ${candidate.unit || ''}\nকেন্দ্র: ${isBn ? (center.name_bn || center.name_en) : (center.name_en || center.name_bn)}\nভবন: ${seat.building || ''}, কক্ষ: ${seat.room || ''}\nআসন নম্বর: ${seat.seat_no || ''}\nরিপোর্টিং সময়: ${seat.reporting_time || ''}\nডিরেকশন লিংক:`;
 
     if (navigator.share) {
       navigator
@@ -431,7 +430,15 @@ const ResultPage = () => {
     );
   }
 
-  if (!resultData) {
+  const isValidResult = Boolean(
+    resultData &&
+    resultData.found !== false &&
+    resultData.candidate &&
+    resultData.seat &&
+    resultData.center
+  );
+
+  if (!isValidResult) {
     return (
       <div className="max-w-md mx-auto px-4 py-12 text-center">
         <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm space-y-4">
@@ -452,9 +459,13 @@ const ResultPage = () => {
     );
   }
 
-  const { candidate, seat, center } = resultData;
+  const candidate = resultData?.candidate || {};
+  const seat = resultData?.seat || {};
+  const center = resultData?.center || {};
   const countdown = getExamCountdown();
-  const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${center.latitude},${center.longitude}`;
+  const directionsUrl = (center.latitude && center.longitude)
+    ? `https://www.google.com/maps/dir/?api=1&destination=${center.latitude},${center.longitude}`
+    : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent((center.name_en || center.name_bn || 'Comilla University') + ' ' + (center.address || ''))}`;
 
   return (
     <div className="max-w-2xl mx-auto px-3.5 sm:px-4 py-4 md:py-8 space-y-5 pb-20">
@@ -682,19 +693,11 @@ const ResultPage = () => {
               </span>
             </div>
 
-            <React.Suspense
-              fallback={
-                <div className="w-full h-72 md:h-80 rounded-2xl bg-slate-100 animate-pulse flex items-center justify-center text-xs text-slate-400 font-medium">
-                  ম্যাপ প্রস্তুত হচ্ছে...
-                </div>
-              }
-            >
-              <MapView
-                center={center}
-                userLocation={geoState.userLocation}
-                isBn={isBn}
-              />
-            </React.Suspense>
+            <MapView
+              center={center}
+              userLocation={geoState.userLocation}
+              isBn={isBn}
+            />
 
             {geoState.distanceKm !== null && (
               <motion.div
