@@ -1455,6 +1455,7 @@ const AdminPortal = () => {
                   <CenterMapPicker
                     latitude={centerForm.latitude}
                     longitude={centerForm.longitude}
+                    suggestedQuery={centerForm.name_en || centerForm.name_bn || centerForm.address}
                     onLocationSelect={(lat, lng) => {
                       setCenterForm((prev) => ({ ...prev, latitude: lat, longitude: lng }));
                     }}
