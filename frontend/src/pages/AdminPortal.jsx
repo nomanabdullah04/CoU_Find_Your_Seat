@@ -806,10 +806,6 @@ const AdminPortal = () => {
               {authLoading ? 'যাচাই করা হচ্ছে...' : t('admin.login_btn')}
             </button>
           </form>
-
-          <div className="pt-2 text-center text-[11px] text-slate-400 border-t border-slate-100">
-            ডেমো ক্রিডেনশিয়াল: ইউজারনেম <code className="font-mono text-primary font-bold">admin</code> / পাসওয়ার্ড <code className="font-mono text-primary font-bold">Admin@12345</code>
-          </div>
         </motion.div>
       </div>
     );
